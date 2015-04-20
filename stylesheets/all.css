@@ -1,0 +1,14 @@
+/* line 3, /home/anton/ruby_projects/greedcold.github.io/source/stylesheets/all.css.scss */
+#article {
+  margin-left: 600px;
+  margin-top: 10px; }
+
+/* line 12, /home/anton/ruby_projects/greedcold.github.io/source/stylesheets/all.css.scss */
+#text {
+  margin-left: 250px;
+  margin-right: 50px; }
+
+/* line 18, /home/anton/ruby_projects/greedcold.github.io/source/stylesheets/all.css.scss */
+#sidebar {
+  position: fixed;
+  top: 30px; }
