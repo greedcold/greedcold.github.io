@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <title>Zuko Blog<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <title>Greedcold<%= ' - ' + current_article.title unless current_article.nil? %></title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
     <%= stylesheet_link_tag "all", "bootstrap", "holo" %>
     <%= javascript_include_tag "all","bootstrap","jquery","quant" %>
@@ -15,7 +15,7 @@
 <!-- top navbar -->
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header">
-         <a class="navbar-brand" href="myblog/index.html.erb">Greedcold</a>
+         <a class="navbar-brand" href="greedcold.github.io/index.html.erb">Greedcold</a>
     </div>
      <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Обо мне</a></li>
@@ -28,7 +28,7 @@
     <div class="affix-top" data-spy="affix" data-offset-top="45" data-offset-bottom="90">
       <ul class="nav" id="sidebar-nav">
         <li><a href="#">Домой</a></li>
-        <li><a href="#section1">Мой профиль на GitHub</a></li>
+        <li><a href="#section1">GitHub</a></li>
         <li><a href="#section2">Портфолио</a></li>
         <li><a>Архив</a>
           <ol>
