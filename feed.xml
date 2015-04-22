@@ -5,16 +5,16 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-04-20T16:55:00+06:00</updated>
+  <updated>2015-04-22T16:44:00+06:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
   <entry>
-    <title>Test Post</title>
-    <link rel="alternate" href="http://blog.url.com/2015/04/20/test-post/"/>
-    <id>http://blog.url.com/2015/04/20/test-post/</id>
-    <published>2015-04-20T16:55:00+06:00</published>
-    <updated>2015-04-20T22:16:36+06:00</updated>
+    <title>Создание блога с помощью Мiddleman и GitHub Pages</title>
+    <link rel="alternate" href="http://blog.url.com/2015/04/22/blog/"/>
+    <id>http://blog.url.com/2015/04/22/blog/</id>
+    <published>2015-04-22T16:44:00+06:00</published>
+    <updated>2015-04-22T18:52:38+06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -28,14 +28,80 @@
 &lt;table&gt;
   &lt;tr&gt;
     &lt;td width="1000px"&gt;
-        &lt;h1 id="text"&gt;Лорем ипсум вот это все&lt;/h1&gt;
         &lt;p id="text"&gt;
+       Middleman весьма простой в использовании генератор статичных сайтов. Он также хорошо подходит для создания блога. Опишу один из способов создание и деплоя блога на Github pages.
+        &lt;/p&gt;
+        &lt;h1 id="text"&gt;Установка&lt;/h1&gt;
+        &lt;p id="text"&gt;
+        Открываем свой терминал и вводим
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;$ gem install middleman&lt;/pre&gt;
+        &lt;p id="text"&gt;Далее создаем репозиторий на Гитхабе, важно чтобы имя репозитория было формата &lt;имя-аккаунта&gt;.github.io.
 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            123
+        &lt;p id="text"&gt; Далее заходим в папку где вы хотите создать свой проект и инициализируете блог, связывая его с репозиторием гитхаба &lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;middleman init username.github.io &lt;span style="color:#006600; font-weight:bold;"&gt;--&lt;/span&gt;template=blog&lt;/pre&gt;
 
+        &lt;p id="text"&gt;Аргумент --template=blog используется для создания временной платформы структуры блога&lt;/p&gt;
+        &lt;p id="text"&gt; Вводим в терминал команду для запуска сервера и видим заготовку для блога на localhost:4567 &lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;$ middleman server&lt;/pre&gt;
+
+        &lt;h1 id="text"&gt;Настройки&lt;/h1&gt;
+        &lt;p id="text"&gt;Добавляем в наш проект Liveroad,который позволяет вносить изменения в свой код, а затем (если ваш сервер работает) смотреть изменения в браузере без необходимости обновлять страницу.Вписываем в gemfile&lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;gem "middleman-livereload", "~&amp;gt; 3.3.0"&lt;/pre&gt;
+
+        &lt;p id="text"&gt;Далее нужно активировать Liveroad в config.rb файле&lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;activate :livereload&lt;/pre&gt;
+        &lt;p id="text"&gt;Для создания нового поста впишите в терминал&lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;$ middleman article название_статьи&lt;/pre&gt;
+
+        &lt;h1 id="text"&gt;Middleman deploy&lt;/h1&gt;
+        &lt;p id="text"&gt;с помощью гема middleman-deploy можно легко задеплоить статичную страницу на Github pages.&lt;/p&gt;
+        &lt;p id="text"&gt;Для начала добавим гем в gemfile &lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;gem "middleman-deploy", "~&amp;gt; 1.0"&lt;/pre&gt;
+        &lt;p id="text"&gt;Далее открываем файл Config.rb и добавляем конфигурацию middleman-deploy сразу после конфигураций блога&lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;activate &lt;span style="color:#ff3333; font-weight:bold;"&gt;:deploy&lt;/span&gt; &lt;span style="color:#9966CC; font-weight:bold;"&gt;do&lt;/span&gt; &lt;span style="color:#006600; font-weight:bold;"&gt;|&lt;/span&gt;deploy&lt;span style="color:#006600; font-weight:bold;"&gt;|&lt;/span&gt;
+          deploy.&lt;span style="color:#9900CC;"&gt;method&lt;/span&gt; = &lt;span style="color:#ff3333; font-weight:bold;"&gt;:git&lt;/span&gt;
+          deploy.&lt;span style="color:#9900CC;"&gt;branch&lt;/span&gt; = &lt;span style="color:#996600;"&gt;'master'&lt;/span&gt;
+          deploy.&lt;span style="color:#9900CC;"&gt;build_before&lt;/span&gt; = &lt;span style="color:#0000FF; font-weight:bold;"&gt;true&lt;/span&gt;
+        &lt;span style="color:#9966CC; font-weight:bold;"&gt;end&lt;/span&gt;
+        &amp;nbsp;
+        activate &lt;span style="color:#ff3333; font-weight:bold;"&gt;:directory_indexes&lt;/span&gt;&lt;/pre&gt;
+
+        &lt;p id="text"&gt;Далее вводим:&lt;/p&gt;
+        &lt;pre class="ruby" style="font-family:monospace;"&gt;middleman deploy&lt;/pre&gt;
+        &lt;p id="text"&gt;Переходим на username.github.io в браузере и видим свой бложик, осталось только настроить внешний вид.&lt;/p&gt;
+        &lt;h1 id="text"&gt;Примечание&lt;/h1&gt;
+        &lt;p id="text"&gt;При добавлении поста нужно каждый раз делать деплой.&lt;/p&gt;
+        
+    
+  
+
+
+
+&lt;/имя-аккаунта&gt;&lt;/p&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Первая запись</title>
+    <link rel="alternate" href="http://blog.url.com/2015/04/20/test-post/"/>
+    <id>http://blog.url.com/2015/04/20/test-post/</id>
+    <published>2015-04-20T16:55:00+06:00</published>
+    <updated>2015-04-22T16:43:42+06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" /&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td width="1000px"&gt;
+        &lt;h1 id="text"&gt;Hello world&lt;/h1&gt;
+        &lt;p id="text"&gt;
+        Это первая запись в моем блоге, до этого я не занимался ведением дневников. Здесь я буду постить свои заметки, шпаргалки и переводы туториалов, дабы не забыть чем же я все-таки занимался.
         &lt;/p&gt;
     &lt;/td&gt;
   &lt;/tr&gt;
