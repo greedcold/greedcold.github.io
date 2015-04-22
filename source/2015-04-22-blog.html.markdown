@@ -1,0 +1,66 @@
+---
+title: blog
+date: 2015-04-22 13:08 UTC
+tags:
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  </head>
+<body>
+
+<table>
+  <tr>
+    <td width="1000px">
+        <p id="text">
+       Middleman весьма простой в использовании генератор статичных сайтов. Он также хорошо подходит для создания блога. Опишу один из способов создание и деплоя блога на Github pages.
+        </p>
+        <h1 id="text">Установка</h1>
+        <p id="text">
+        Открываем свой терминал и вводим
+        <pre class="ruby" style="font-family:monospace;">$ gem install middleman</pre>
+        <p id="text">Далее создаем репозиторий на Гитхабе, важно чтобы имя репозитория было формата <имя-аккаунта>.github.io.</p>
+
+        <p id="text"> Далее заходим в папку где вы хотите создать свой проект и инициализируете блог, связывая его с репозиторием гитхаба </p>
+        <pre class="ruby" style="font-family:monospace;">middleman init username.github.io <span style="color:#006600; font-weight:bold;">--</span>template=blog</pre>
+
+        <p id="text">Аргумент --template=blog используется для создания временной платформы структуры блога</p>
+        <p id="text"> Вводим в терминал команду для запуска сервера и видим заготовку для блога на localhost:4567 </p>
+        <pre class="ruby" style="font-family:monospace;">$ middleman server</pre>
+
+        <h1 id="text">Настройки</h1>
+        <p id="text">Добавляем в наш проект Liveroad,который позволяет вносить изменения в свой код, а затем (если ваш сервер работает) смотреть изменения в браузере без необходимости обновлять страницу.Вписываем в gemfile</p>
+        <pre class="ruby" style="font-family:monospace;">gem "middleman-livereload", "~> 3.3.0"</pre>
+
+        <p id="text">Далее нужно активировать Liveroad в config.rb файле</p>
+        <pre class="ruby" style="font-family:monospace;">activate :livereload</pre>
+        <p id="text">Для создания нового поста впишите в терминал</p>
+        <pre class="ruby" style="font-family:monospace;">$ middleman article название_статьи</pre>
+
+        <h1 id="text">Middleman deploy</h1>
+        <p id="text">с помощью гема middleman-deploy можно легко задеплоить статичную страницу на Github pages.</p>
+        <p id="text">Для начала добавим гем в gemfile </p>
+        <pre class="ruby" style="font-family:monospace;">gem "middleman-deploy", "~> 1.0"</pre>
+        <p id="text">Далее открываем файл Config.rb и добавляем конфигурацию middleman-deploy сразу после конфигураций блога</p>
+        <pre class="ruby" style="font-family:monospace;">activate <span style="color:#ff3333; font-weight:bold;">:deploy</span> <span style="color:#9966CC; font-weight:bold;">do</span> <span style="color:#006600; font-weight:bold;">|</span>deploy<span style="color:#006600; font-weight:bold;">|</span>
+          deploy.<span style="color:#9900CC;">method</span> = <span style="color:#ff3333; font-weight:bold;">:git</span>
+          deploy.<span style="color:#9900CC;">branch</span> = <span style="color:#996600;">'master'</span>
+          deploy.<span style="color:#9900CC;">build_before</span> = <span style="color:#0000FF; font-weight:bold;">true</span>
+        <span style="color:#9966CC; font-weight:bold;">end</span>
+        &nbsp;
+        activate <span style="color:#ff3333; font-weight:bold;">:directory_indexes</span></pre>
+
+        <p id="text">Далее вводим:</p>
+        <pre class="ruby" style="font-family:monospace;">middleman deploy</pre>
+        <p id="text">Переходим на username.github.io в браузере и видим свой бложик, осталось только настроить внешний вид.</p>
+        <h1 id="text">Примечание</h1>
+        <p id="text">При добавлении поста нужно каждый раз делать деплой.</p>
+        <p id="text">Для разработки (в т.ч. для добавления постов) нужно создать дополнительную ветку, при деплое все изменения вольются в основную ветку и выкатятся на сервер </p>
+        </p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
