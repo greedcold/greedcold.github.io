@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/2015/04/22/blog/"/>
     <id>http://blog.url.com/2015/04/22/blog/</id>
     <published>2015-04-22T16:44:00+06:00</published>
-    <updated>2015-04-22T19:29:58+06:00</updated>
+    <updated>2015-04-22T22:07:34+06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -45,10 +45,10 @@
         &lt;pre class="ruby" style="font-family:monospace;"&gt;$ middleman server&lt;/pre&gt;
 
         &lt;h1 id="text"&gt;Настройки&lt;/h1&gt;
-        &lt;p id="text"&gt;Добавляем в наш проект Liveroad,который позволяет вносить изменения в свой код, а затем (если ваш сервер работает) смотреть изменения в браузере без необходимости обновлять страницу.Вписываем в gemfile&lt;/p&gt;
+        &lt;p id="text"&gt;Добавляем в наш проект Livereload,который позволяет вносить изменения в свой код, а затем (если ваш сервер работает) смотреть изменения в браузере без необходимости обновлять страницу.Вписываем в gemfile&lt;/p&gt;
         &lt;pre class="ruby" style="font-family:monospace;"&gt;gem "middleman-livereload", "~&amp;gt; 3.3.0"&lt;/pre&gt;
 
-        &lt;p id="text"&gt;Далее нужно активировать Liveroad в config.rb файле&lt;/p&gt;
+        &lt;p id="text"&gt;Далее нужно активировать Livereload в config.rb файле&lt;/p&gt;
         &lt;pre class="ruby" style="font-family:monospace;"&gt;activate :livereload&lt;/pre&gt;
         &lt;p id="text"&gt;Для создания нового поста впишите в терминал&lt;/p&gt;
         &lt;pre class="ruby" style="font-family:monospace;"&gt;$ middleman article название_статьи&lt;/pre&gt;
