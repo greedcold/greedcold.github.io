@@ -29,7 +29,6 @@
       <ul class="nav" id="sidebar-nav">
         <li><a href="#">Домой</a></li>
         <li><a href="#section1">GitHub</a></li>
-        <li><a href="#section2">Портфолио</a></li>
         <li><a>Архив</a>
           <ol>
             <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
